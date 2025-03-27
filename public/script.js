@@ -1,12 +1,22 @@
-<!doctype html>
-<head>
-    <title> Icon Design </title>
-  
-        }
+document.body.style.margin   = 0
+document.body.style.overflow = `hidden`
 
-</head>
+const cnv = document.getElementById (`cnv_element`)
+cnv.width = innerWidth
+cnv.height = innerHeight
 
-<body>
+const ctx = cnv.getContext (`2d`)
 
-   
-</script>
+const draw_frame = () => {
+   ctx.fillStyle = `turquoise`
+   ctx.fillRect (0, 0, innerWidth, innerHeight)
+
+   requestAnimationFrame (draw_frame)
+}
+
+draw_frame ()
+
+window.onresize = () => {
+   cnv.width = innerWidth
+   cnv.height = innerHeight   
+}
