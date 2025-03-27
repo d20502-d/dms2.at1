@@ -1,16 +1,124 @@
 <!doctype html>
 <head>
     <title> hi </title>
-</head>
-
-<div class="profile-card">
-    <img src="portrait.jpg" id="portraitImage" alt="AI Profile Image">
-    <p class="bio">"Hi! I'm into algorithms and long walks on the server."</p>
-    <div class="swipe-buttons">
-      <button id="swipeLeft">Swipe Left</button>
-      <button id="swipeRight">Swipe Right</button>
-    </div>
-  </div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Algorithm of the Heart</title>
+      <style>
+        body {
+          background: #f6f6f6;
+          font-family: 'Helvetica Neue', sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+        }
+    
+        .app-container {
+          width: 360px;
+          background: #fff;
+          border-radius: 10px;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+          overflow: hidden;
+          text-align: center;
+          padding: 20px;
+        }
+    
+        .profile-card img {
+          width: 100%;
+          border-radius: 10px;
+          transition: 0.3s ease;
+        }
+    
+        .bio {
+          margin: 15px 0;
+          font-size: 16px;
+          color: #333;
+        }
+    
+        .swipe-buttons {
+          display: flex;
+          justify-content: space-around;
+        }
+    
+        .swipe-buttons button {
+          background-color: #eee;
+          border: none;
+          border-radius: 50%;
+          padding: 15px 20px;
+          font-size: 18px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+    
+        .swipe-buttons button:hover {
+          background-color: #ccc;
+        }
+    
+        .feedback {
+          margin-top: 10px;
+          font-size: 14px;
+          color: #666;
+        }
+      </style>
+    </head>
+    <body>
+    
+      <div class="app-container">
+        <div class="profile-card">
+          <img id="portraitImage" src="https://via.placeholder.com/350x400?text=Profile+1" alt="AI Profile Image">
+          <p class="bio" id="bioText">Hi! I'm into algorithms and long walks on the server.</p>
+        </div>
+        <div class="swipe-buttons">
+          <button id="swipeLeft">👈</button>
+          <button id="swipeRight">👉</button>
+        </div>
+        <div class="feedback" id="feedbackText">Swipe to begin...</div>
+      </div>
+    
+      <script>
+        const portraits = [
+          {
+            img: "https://via.placeholder.com/350x400?text=Profile+1",
+            bio: "Hi! I'm into algorithms and long walks on the server."
+          },
+          {
+            img: "https://via.placeholder.com/350x400?text=Glitched+1",
+            bio: "I mirror your preferences... too perfectly."
+          },
+          {
+            img: "https://via.placeholder.com/350x400?text=Distorted+2",
+            bio: "What is real? What is code? Swipe again to find out."
+          }
+        ];
+    
+        let currentIndex = 0;
+        const portraitImg = document.getElementById("portraitImage");
+        const bioText = document.getElementById("bioText");
+        const feedback = document.getElementById("feedbackText");
+    
+        document.getElementById("swipeLeft").addEventListener("click", () => {
+          swipe("left");
+        });
+    
+        document.getElementById("swipeRight").addEventListener("click", () => {
+          swipe("right");
+        });
+    
+        function swipe(direction) {
+          currentIndex = (currentIndex + 1) % portraits.length;
+          portraitImg.src = portraits[currentIndex].img;
+          bioText.textContent = portraits[currentIndex].bio;
+          feedback.textContent = direction === "left" ? "You swiped left. Is that rejection or reflection?" : "You swiped right. The algorithm is learning...";
+        }
+      </script>
+    
+    </body>
+    </html>
+    
 
 <body>
    <canvas id="cnv_element"></canvas>
